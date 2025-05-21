@@ -1,5 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import useCamera from "../hooks/useCamera";
+import { useNavigate } from "react-router-dom";
 
 export default function CameraCapture() {
   const { videoRef, start, stop, error } = useCamera();
@@ -8,6 +9,8 @@ export default function CameraCapture() {
   const [isUploading, setUploading] = useState(false);
 
   /** 스냅샷 찍기 */
+
+  const navigate = useNavigate();
   const takePhoto = () => {
     if (!videoRef.current || !canvasRef.current) return;
     const { videoWidth: w, videoHeight: h } = videoRef.current;
@@ -19,9 +22,10 @@ export default function CameraCapture() {
       if (!blob) return;
       const url = URL.createObjectURL(blob);
       setPhotoURL(url);
-      upload(blob); // 촬영 후 즉시 업로드
+      upload(blob);
+      navigate("/camera/result?url=" + url);
     }, "image/jpeg");
-    stop(); // 찍은 뒤 미리보기 종료(선택)
+    stop();
   };
 
   /** 업로드 */
@@ -39,20 +43,54 @@ export default function CameraCapture() {
     }
   };
 
+  useEffect(() => {
+    start();
+    return () => {
+      stop();
+    };
+  }, []);
+
   return (
     <div>
-      <button onClick={start}>카메라 열기</button>
-
-      <div style={{ display: videoRef.current ? "block" : "none" }}>
-        <video ref={videoRef} autoPlay playsInline style={{ width: "100%" }} />
-        <button onClick={takePhoto}>📸 찍기</button>
-        <button onClick={stop}>닫기</button>
+      <div
+        style={{ display: videoRef.current ? "block" : "none" }}
+        className="text-center"
+      >
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          style={{
+            width: "100%",
+            aspectRatio: "9 / 16",
+            objectFit: "cover",
+            background: "black",
+          }}
+        />
+        <button
+          onClick={takePhoto}
+          style={{
+            transform: "translateX(-50%) translateY(-5rem)",
+          }}
+          className="absolute z-10 w-16 h-16 bg-white rounded-full "
+        />
       </div>
 
       {photoURL && (
         <div>
           <h4>촬영 결과</h4>
-          <img src={photoURL} alt="snapshot" style={{ width: "100%" }} />
+          <img
+            src={photoURL}
+            alt="snapshot"
+            width="800"
+            height="600"
+            style={{
+              width: "100%",
+              aspectRatio: "3 / 4",
+              objectFit: "cover",
+              background: "black",
+            }}
+          />
         </div>
       )}
 

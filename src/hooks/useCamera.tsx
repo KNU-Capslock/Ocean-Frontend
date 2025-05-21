@@ -7,7 +7,13 @@ export default function useCamera() {
 
   const start = async () => {
     try {
-      const s = await navigator.mediaDevices.getUserMedia({ video: true });
+      const s = await navigator.mediaDevices.getUserMedia({
+        video: {
+          aspectRatio: 9 / 16,
+          width: { ideal: 720 },
+          facingMode: "environment",
+        },
+      });
       setStream(s);
       if (videoRef.current) {
         videoRef.current.srcObject = s;
