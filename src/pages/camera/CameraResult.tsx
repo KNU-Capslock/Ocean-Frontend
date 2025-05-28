@@ -7,7 +7,6 @@ const CameraResult = () => {
   const photoURL = query.get("url");
   return (
     <div className="flex flex-col flex-grow">
-      <h1 className="p-2">사진 결과</h1>
       <img src={photoURL!} />
       <div className="flex flex-col flex-grow gap-2 p-4">
         <h1 className="text-lg font-semibold">
