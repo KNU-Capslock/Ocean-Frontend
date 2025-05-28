@@ -11,6 +11,7 @@ export default function useCamera() {
         video: {
           aspectRatio: 9 / 16,
           width: { ideal: 720 },
+          height: { ideal: 1280 },
           facingMode: "environment",
         },
       });
