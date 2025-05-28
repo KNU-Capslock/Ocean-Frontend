@@ -58,3 +58,12 @@ export const NotiIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
     />
   );
 };
+
+export const LeftIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[mingcute--left-fill] " + (props.className ?? "")}
+    />
+  );
+};
