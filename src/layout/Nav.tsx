@@ -12,10 +12,15 @@ const Nav = () => {
     <>
       <div className="mt-16" />
       <nav className="fixed bottom-0 flex items-center justify-between w-full max-w-[512px] bg-white py-3 px-10">
-        <HomeIcon className="w-6 h-6" />
+        <HomeIcon
+          onClick={() => {
+            navigate("/");
+          }}
+          className="w-6 h-6 cursor-pointer"
+        />
         <ClosetIcon className="w-6 h-6" />
         <div
-          className="h-10 p-2 rounded-lg bg-neutral-200"
+          className="h-10 p-2 rounded-lg cursor-pointer bg-neutral-200"
           onClick={() => {
             navigate("/camera");
           }}
