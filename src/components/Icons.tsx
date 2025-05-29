@@ -67,3 +67,50 @@ export const LeftIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
     />
   );
 };
+
+export const HatIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[mingcute--hat-line] " + (props.className ?? "")}
+    />
+  );
+};
+
+export const JacketIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[lucide-lab--jacket] " + (props.className ?? "")}
+    />
+  );
+};
+
+export const ShirtIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[tabler-shirt] " + (props.className ?? "")}
+    />
+  );
+};
+
+export const PantsIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[icon-park--clothes-pants] " + (props.className ?? "")}
+    />
+  );
+};
+
+export const ShoesIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={
+        "icon-[icon-park-outline--spikedshoes] " + (props.className ?? "")
+      }
+    />
+  );
+};
