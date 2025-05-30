@@ -6,10 +6,10 @@ export const getClothes = async () => {
   return await getRequest<Cloth[]>("/mocks/clothesData.json");
 };
 
-export const getOneCloth = async (id: number) => {
-  //return await getRequest<Cloth[]>(`/clothes/${id}`);
-  return await getRequest<Cloth[]>("/mocks/OneclothData.json");
-};
+// export const getOneCloth = async (id: number) => {
+//   //return await getRequest<Cloth[]>(`/clothes/${id}`);
+//   return await getRequest<Cloth[]>("/mocks/OneclothData.json");
+// };
 
 export const deleteCloth = async (id: number) => {
   await deleteRequest<void>(`/clothes/${id}`);
