@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "username": "heydy",
+  "name": "봄 셔츠",
+  "imageSrc": "https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=400&q=80",
+  "type": "셔츠",
+  "detail": "드롭숄더",
+  "print": "스트라이프",
+  "texture": "우븐",
+  "style": "contemporary"
+}
