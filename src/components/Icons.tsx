@@ -90,7 +90,7 @@ export const ShirtIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
       {...props}
-      className={"icon-[tabler-shirt] " + (props.className ?? "")}
+      className={"icon-[tabler--shirt] " + (props.className ?? "")}
     />
   );
 };
