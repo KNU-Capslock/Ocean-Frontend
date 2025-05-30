@@ -1,6 +1,7 @@
 import Camera from "@/assets/Camera.png";
 import { useNavigate } from "react-router-dom";
-
+import Category from "@components/ui/category";
+import Report from "@components/ui/Report";
 const Main = () => {
   const navigate = useNavigate();
   return (
@@ -18,6 +19,31 @@ const Main = () => {
           사진 찍기
         </button>
       </div>
+
+      <Category
+        type="셔츠"
+        detail="드롭숄더"
+        print="스트라이프"
+        texture="우븐"
+        clothstyle="contemporary"
+      />
+
+      <Category
+        type="팬츠"
+        detail="자수"
+        print="무지"
+        texture="우븐"
+        clothstyle="contemporary"
+      />
+      <Report
+        type="팬츠"
+        detail="자수"
+        print="무지"
+        texture="우븐"
+        clothstyle="contemporary"
+        created_at="2024-10-05"
+      ></Report>
+
       <div
         style={{
           margin: "0 -1rem",
