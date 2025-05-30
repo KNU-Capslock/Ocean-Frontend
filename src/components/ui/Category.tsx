@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from "react";
 
 import { ShirtIcon } from "@components/Icons";
+import Image from "./Image";
 
 interface CategoryProps extends HTMLAttributes<HTMLDivElement> {
   image?: string;
@@ -22,23 +23,23 @@ const Category = ({
 }: CategoryProps) => {
   return (
     <div
-      className="flex items-center gap-4 p-2 rounded-xl bg-gray-50"
+      className="flex items-center gap-4 px-4 py-2 rounded-xl bg-gray-50"
       {...rest}
     >
-      <ShirtIcon className="w-6 h-6 text-neutral-500 flex-shrink-0" />
-      <img
+      <ShirtIcon className="flex-shrink-0 w-6 h-6 text-neutral-500" />
+      <Image
         src={
           image ??
           "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?fit=crop&w=100&q=80"
         }
         alt="의류 이미지"
-        className="w-16 h-16 rounded-lg object-cover border"
+        className="object-cover w-16 h-16 border-2 rounded-lg border-neutral-300"
       />
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1.5">
         {[type, detail, print, texture, clothstyle].map((tag, i) => (
           <span
             key={i}
-            className="px-3 py-1 text-sm border rounded-full text-black border-neutral-300"
+            className="px-3 py-0.5 text-sm font-medium bg-white border rounded-full border-neutral-300"
           >
             {tag}
           </span>
