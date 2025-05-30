@@ -6,9 +6,13 @@ import SmallButton from "@components/ui/SmallButton";
 import { XIcon } from "@components/Icons";
 import RecommendButton from "@components/ui/RecommendButton";
 import DropdownButton from "@components/ui/DropDownButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Main = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("token")) navigate("/onboard");
+  }, []);
 
   const [sortby, setSortBy] = useState(0);
 
