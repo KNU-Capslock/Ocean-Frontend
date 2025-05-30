@@ -1,9 +1,16 @@
 import Camera from "@/assets/Camera.png";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Category from "@components/ui/category";
 import Report from "@components/ui/Report";
+import SmallButton from "@components/ui/SmallButton";
+import { XIcon } from "@components/Icons";
+import RecommendButton from "@components/ui/RecommendButton";
+import DropdownButton from "@components/ui/DropDownButton";
 const Main = () => {
   const navigate = useNavigate();
+  const [sortBy, setSortBy] = useState(0);
+
   return (
     <div className="flex flex-col gap-4 px-4 pt-2">
       <div className="flex flex-col items-center gap-1 p-4 rounded-2xl bg-neutral-100">
@@ -19,7 +26,6 @@ const Main = () => {
           사진 찍기
         </button>
       </div>
-
       <Category
         type="셔츠"
         detail="드롭숄더"
@@ -27,7 +33,6 @@ const Main = () => {
         texture="우븐"
         clothstyle="contemporary"
       />
-
       <Category
         type="팬츠"
         detail="자수"
@@ -43,7 +48,17 @@ const Main = () => {
         clothstyle="contemporary"
         created_at="2024-10-05"
       ></Report>
-
+      <div>
+        <SmallButton className="flex-grow">
+          <XIcon className="w-5 h-5" />
+          닫기
+        </SmallButton>
+        <RecommendButton />
+        <DropdownButton
+          dropdownMenuList={["스타일별", "쭝성이", "띵성이"]}
+          stateHandler={setSortBy}
+        />
+      </div>
       <div
         style={{
           margin: "0 -1rem",
