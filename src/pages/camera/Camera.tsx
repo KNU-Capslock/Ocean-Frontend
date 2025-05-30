@@ -9,11 +9,24 @@ const Camera = () => {
   const navigate = useNavigate();
   const takePhoto = () => {
     if (!videoRef.current || !canvasRef.current) return;
-    const { videoWidth: w, videoHeight: h } = videoRef.current;
-    canvasRef.current.width = w;
-    canvasRef.current.height = h;
+    // const { videoWidth: w, videoHeight: h } = videoRef.current;
+    // canvasRef.current.width = w;
+    // canvasRef.current.height = h;
+
+    const rect = videoRef.current.getBoundingClientRect();
+
+    const vw = videoRef.current.videoWidth;
+    const vh = videoRef.current.videoHeight;
+    const cropW = vh * (rect.width / rect.height);
+    const cropH = vh;
+    const sx = (vw - cropW) / 2;
+    const sy = 0;
+
+    canvasRef.current.width = cropW;
+    canvasRef.current.height = cropH;
+
     const ctx = canvasRef.current.getContext("2d")!;
-    ctx.drawImage(videoRef.current, 0, 0, w, h);
+    ctx.drawImage(videoRef.current, sx, sy, cropW, cropH, 0, 0, cropW, cropH);
     canvasRef.current.toBlob((blob) => {
       if (!blob) return;
       const url = URL.createObjectURL(blob);
@@ -51,7 +64,6 @@ const Camera = () => {
         />
         <button
           onClick={() => {
-            console.log("adsf");
             takePhoto();
           }}
           style={{
@@ -60,7 +72,18 @@ const Camera = () => {
           className="absolute bottom-0 z-10 w-16 h-16 bg-white rounded-full left-1/2"
         />
       </div>
-      <canvas ref={canvasRef} style={{ display: "none" }} />
+      <canvas
+        ref={canvasRef}
+        style={{
+          display: "none",
+          height: "calc(100vh - 7.5rem)",
+          width: "100%",
+          aspectRatio: "9 / 16",
+          objectFit: "cover",
+          background: "black",
+          flexGrow: "1",
+        }}
+      />
     </div>
   );
 };
