@@ -19,11 +19,14 @@ const Report = ({
   texture,
   clothstyle,
   created_at,
-  ...rest
+  ...props
 }: ReportProps) => {
   return (
-    <div className="flex flex-col p-4 gap-4 rounded-2xl  w-[350px] bg-white shadow-2xl">
-      <ShirtIcon className="w-6 h-6 text-neutral-500 flex-shrink-0" />
+    <div
+      {...props}
+      className="flex flex-col p-4 gap-4 rounded-2xl  w-[350px] bg-white shadow-2xl"
+    >
+      <ShirtIcon className="flex-shrink-0 w-6 h-6 text-neutral-500" />
 
       <div className="flex flex-col items-center ">
         <img
@@ -32,7 +35,7 @@ const Report = ({
             "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?fit=crop&w=100&q=80"
           }
           alt="의류 이미지"
-          className="w-64 h-64 rounded-lg object-cover border"
+          className="object-cover w-64 h-64 border rounded-lg"
         />
       </div>
       <div>

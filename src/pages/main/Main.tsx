@@ -1,15 +1,16 @@
 import Camera from "@/assets/Camera.png";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import Category from "@components/ui/category";
+import Category from "@components/ui/Category";
 import Report from "@components/ui/Report";
 import SmallButton from "@components/ui/SmallButton";
 import { XIcon } from "@components/Icons";
 import RecommendButton from "@components/ui/RecommendButton";
 import DropdownButton from "@components/ui/DropDownButton";
+import { useState } from "react";
 const Main = () => {
   const navigate = useNavigate();
-  const [sortBy, setSortBy] = useState(0);
+
+  const [sortby, setSortBy] = useState(0);
 
   return (
     <div className="flex flex-col gap-4 px-4 pt-2">
@@ -54,6 +55,7 @@ const Main = () => {
           닫기
         </SmallButton>
         <RecommendButton />
+        {sortby}
         <DropdownButton
           dropdownMenuList={["스타일별", "쭝성이", "띵성이"]}
           stateHandler={setSortBy}
