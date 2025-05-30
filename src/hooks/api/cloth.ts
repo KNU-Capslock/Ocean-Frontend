@@ -1,4 +1,4 @@
-import { getClothes, getOneCloth, deleteCloth } from "@services/cloth";
+import { getClothes } from "@services/cloth";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetClothes = () => {
@@ -8,11 +8,11 @@ export const useGetClothes = () => {
   });
 };
 
-export const useGetOneCloth = (id: number) => {
-  return useQuery({
-    queryKey: ["cloth", id],
-    queryFn: () => getOneCloth(id),
-  });
-};
+// export const useGetOneCloth = (id: number) => {
+//   return useQuery({
+//     queryKey: ["cloth", id],
+//     queryFn: () => getOneCloth(id),
+//   });
+// };
 
 // export const useDeleteCloth = () => {};
