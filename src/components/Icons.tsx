@@ -141,3 +141,32 @@ export const DownIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
     />
   );
 };
+
+export const WarnIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={
+        "icon-[material-symbols--warning-rounded] " + (props.className ?? "")
+      }
+    />
+  );
+};
+
+export const BarSpinner = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[svg-spinners--bars-fade] " + (props.className ?? "")}
+    />
+  );
+};
+
+export const BlockSpinner = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[svg-spinners--blocks-wave] " + (props.className ?? "")}
+    />
+  );
+};
