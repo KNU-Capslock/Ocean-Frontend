@@ -114,3 +114,30 @@ export const ShoesIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
     />
   );
 };
+
+export const GPTIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[hugeicons--chat-gpt] " + (props.className ?? "")}
+    />
+  );
+};
+
+export const XIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[dashicons--no-alt] " + (props.className ?? "")}
+    />
+  );
+};
+
+export const DownIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[mingcute--down-line] " + (props.className ?? "")}
+    />
+  );
+};
