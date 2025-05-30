@@ -4,8 +4,8 @@ export interface Post {
   id: number;
   title: string;
   content: string;
-  imageSrc: string;
-  createdAt: string;
+  image_src: string;
+  created_at: string;
   username: string;
-  clothesList: Cloth[];
+  clothes_list: Cloth[];
 }

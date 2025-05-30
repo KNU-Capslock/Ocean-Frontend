@@ -7,5 +7,5 @@ export interface Cloth {
   print: string;
   texture: string;
   style: string;
-  imageSrc: string;
+  image_src: string;
 }
