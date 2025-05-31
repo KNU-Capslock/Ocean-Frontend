@@ -2,8 +2,8 @@ import { getRequest, deleteRequest, postRequest } from "./api";
 import type { Cloth } from "@/models/cloth.model";
 
 export const getClothes = async () => {
-  //return await getRequest<Cloth[]>("/clothes");
-  return await getRequest<Cloth[]>("/mocks/clothesData.json");
+  return await getRequest<Cloth[]>("/clothes");
+  //return await getRequest<Cloth[]>("/mocks/clothesData.json");
 };
 
 // export const getOneCloth = async (id: number) => {

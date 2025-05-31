@@ -1,4 +1,5 @@
 import type { HTMLAttributes } from "react";
+import Image from "@components/ui/Image";
 
 interface ClothesContainerProps extends HTMLAttributes<HTMLDivElement> {
   clothImg: string;
@@ -8,14 +9,23 @@ interface ClothesContainerProps extends HTMLAttributes<HTMLDivElement> {
 const ClothesContainer = ({
   clothImg,
   clothType,
-  className,
+  className = "",
   ...props
 }: ClothesContainerProps) => {
   return (
     <div
       {...props}
-      className={"min-w-32 min-h-32 bg-neutral-50 p-4" + (className ?? "")}
-    ></div>
+      className={
+        "flex items-center justify-center w-40 h-40 bg-neutral-200 p-4 rounded-3xl" +
+        (className ?? "")
+      }
+    >
+      <Image
+        src={clothImg}
+        alt={clothType}
+        className="flex w-28 h-28 object-cover "
+      />
+    </div>
   );
 };
 
