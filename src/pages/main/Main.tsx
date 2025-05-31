@@ -20,7 +20,8 @@ const Main = () => {
     <div className="flex flex-col gap-4 px-4 pt-2">
       {isAllPostDataLoading ? (
         <Skeleton />
-      ) : allPostData![0].created_at.slice(0, 10) !== today ? (
+      ) : allPostData!.length == 0 ||
+        allPostData![0].created_at.slice(0, 10) !== today ? (
         <div className="flex flex-col items-center gap-1 p-4 rounded-2xl bg-neutral-100">
           <img className="w-56 h-56" src={Camera} />
           <h1 className="text-xl font-bold ">오늘의 사진을 안찍었어요.</h1>
