@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from "react";
 import { ShirtIcon } from "@components/Icons";
+import Image from "./Image";
 
 interface ReportProps extends HTMLAttributes<HTMLDivElement> {
   image?: string;
@@ -8,7 +9,6 @@ interface ReportProps extends HTMLAttributes<HTMLDivElement> {
   print: string;
   texture: string;
   clothstyle: string;
-  created_at: string;
 }
 
 const Report = ({
@@ -18,24 +18,26 @@ const Report = ({
   print,
   texture,
   clothstyle,
-  created_at,
   ...props
 }: ReportProps) => {
   return (
     <div
       {...props}
-      className="flex flex-col p-4 gap-4 rounded-2xl  w-[350px] bg-white shadow-2xl"
+      className={
+        "flex flex-col p-4 gap-4 rounded-2xl  w-[350px] bg-white shadow-2xl " +
+        (props.className ?? "")
+      }
     >
       <ShirtIcon className="flex-shrink-0 w-6 h-6 text-neutral-500" />
 
       <div className="flex flex-col items-center ">
-        <img
+        <Image
           src={
             image ??
             "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?fit=crop&w=100&q=80"
           }
           alt="의류 이미지"
-          className="object-cover w-64 h-64 border rounded-lg"
+          className="w-64 h-64 rounded-lg "
         />
       </div>
       <div>
@@ -44,7 +46,6 @@ const Report = ({
         <Text label="프린트" value={print} />
         <Text label="텍스쳐" value={texture} />
         <Text label="스타일" value={clothstyle} />
-        <Text label="등록한 날" value={created_at} />
       </div>
     </div>
   );
