@@ -1,54 +1,32 @@
-# React + TypeScript + Vite
+# 🌊 오션
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 서비스 요약
 
-Currently, two official plugins are available:
+**오션** -
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📱 배포 링크
 
-## Expanding the ESLint configuration
+[https://ocean.mojan.kr](https://ocean.mojan.kr)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🌲 나달
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+| <img src="https://avatars.githubusercontent.com/u/174276728?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/130034324?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/71973291?v=4" width="150" height="150"/> | <img src="https://avatars.githubusercontent.com/u/172799476?v=4" width="150" height="150"/> |
+| :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+|                     이동윤<br/>[@heydylee](https://github.com/heydylee)                     |                      전창우<br/>[@JEONW00](https://github.com/JEONW00)                      |                   심준성<br/>[@MOJAN3543](https://github.com/MOJAN3543)                    |                 윤강훈<br/>[@YoonGangHoon](https://github.com/YoonGangHoon)                 |
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 시연 영상
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 💬 서비스 소개
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### 🔧서비스 개요
+
+### 타서비스와의 차별점
+
+### 구현 내용 및 결과물
+
+## 향후 개선 혹은 발전 방안
+
+## Ohter Repository
+
+[**백엔드 레포지토리**](https://github.com/KNU-Capslock/Ocean-Backend)  
+[**이미지 서버 레포지토리**](https://github.com/KNU-Capslock/Ocean-AI)
