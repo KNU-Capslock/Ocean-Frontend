@@ -1,4 +1,9 @@
-import { getPost, postPost, type PostPostPayload } from "@services/post";
+import {
+  getAllPost,
+  getPost,
+  postPost,
+  type PostPostPayload,
+} from "@services/post";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const useCreatePost = () => {
@@ -12,5 +17,12 @@ export const useGetPost = (id: number) => {
   return useQuery({
     queryKey: ["post", id],
     queryFn: () => getPost(id),
+  });
+};
+
+export const useGetAllPost = () => {
+  return useQuery({
+    queryKey: ["postAll"],
+    queryFn: () => getAllPost(),
   });
 };

@@ -170,3 +170,12 @@ export const BlockSpinner = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
     />
   );
 };
+
+export const CameraAiIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[mingcute--camera-2-ai-line] " + (props.className ?? "")}
+    />
+  );
+};

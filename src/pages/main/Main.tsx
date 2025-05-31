@@ -1,12 +1,8 @@
 import Camera from "@/assets/Camera.png";
 import { useNavigate } from "react-router-dom";
-import Category from "@components/ui/Category";
-import Report from "@components/ui/Report";
-import SmallButton from "@components/ui/SmallButton";
-import { XIcon } from "@components/Icons";
-import RecommendButton from "@components/ui/RecommendButton";
-import DropdownButton from "@components/ui/DropDownButton";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useGetAllPost } from "@/hooks/api/post";
+import Image from "@components/ui/Image";
 const Main = () => {
   const navigate = useNavigate();
 
@@ -14,7 +10,8 @@ const Main = () => {
     if (!sessionStorage.getItem("token")) navigate("/onboard");
   }, []);
 
-  const [sortby, setSortBy] = useState(0);
+  const { data: allPostData, isLoading: isAllPostDataLoading } =
+    useGetAllPost();
 
   return (
     <div className="flex flex-col gap-4 px-4 pt-2">
@@ -31,49 +28,25 @@ const Main = () => {
           사진 찍기
         </button>
       </div>
-      <Category
-        type="셔츠"
-        detail="드롭숄더"
-        print="스트라이프"
-        texture="우븐"
-        clothstyle="contemporary"
-      />
-      <Category
-        type="팬츠"
-        detail="자수"
-        print="무지"
-        texture="우븐"
-        clothstyle="contemporary"
-      />
-      <Report
-        type="팬츠"
-        detail="자수"
-        print="무지"
-        texture="우븐"
-        clothstyle="contemporary"
-        created_at="2024-10-05"
-      ></Report>
-      <div>
-        <SmallButton className="flex-grow">
-          <XIcon className="w-5 h-5" />
-          닫기
-        </SmallButton>
-        <RecommendButton />
-        {sortby}
-        <DropdownButton
-          dropdownMenuList={["스타일별", "쭝성이", "띵성이"]}
-          stateHandler={setSortBy}
-        />
-      </div>
       <div
         style={{
           margin: "0 -1rem",
         }}
         className="grid grid-cols-2 gap-[1px]"
       >
-        {[...Array(16)].map((_, index) => {
-          return <img src={`https://picsum.photos/seed/${index}/512/512`} />;
-        })}
+        {!isAllPostDataLoading &&
+          allPostData!.map((post) => {
+            return (
+              <Image
+                onClick={() => {
+                  navigate(`/post?id=${post.id}`);
+                }}
+                style={{ aspectRatio: 1 }}
+                className="object-cover cursor-pointer"
+                src={post.image_src}
+              />
+            );
+          })}
       </div>
     </div>
   );

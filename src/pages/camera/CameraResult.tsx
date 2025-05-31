@@ -26,11 +26,7 @@ const CameraResult = () => {
       setIsLoading(true);
       postPost(post, {
         onSuccess: (res) => {
-          navigate("/post", {
-            state: {
-              id: res.id,
-            },
-          });
+          navigate(`/post?id=${res.id}`);
         },
         onError: () => {
           alert("알 수 없는 에러가 발생했습니다.");
