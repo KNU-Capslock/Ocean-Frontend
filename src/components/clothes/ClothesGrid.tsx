@@ -13,7 +13,7 @@ const ClothesGrid = () => {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-4 items-center justify-center">
+    <div className="flex flex-wrap items-center justify-center w-full gap-4 p-4">
       {clothes
         .slice()
         .reverse()

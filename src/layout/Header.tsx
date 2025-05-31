@@ -19,7 +19,7 @@ const Header = () => {
   return (
     headerVisible && (
       <>
-        <header className="fixed top-0 w-full z-[1] max-w-[512px] flex items-center justify-between px-4 py-3 border-b border-neutral-200 bg-white">
+        <header className="fixed top-0 w-full z-10 max-w-[512px] flex items-center justify-between px-4 py-3 border-b border-neutral-200 bg-white">
           {text ? (
             <LeftIcon
               className="w-6 h-6 cursor-pointer"

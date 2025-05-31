@@ -21,7 +21,7 @@ const Nav = () => {
     navVisible && (
       <>
         <div className="mt-16" />
-        <nav className="fixed bottom-0 flex items-center justify-between w-full max-w-[512px] bg-white py-3 px-10">
+        <nav className="fixed z-10 bottom-0 flex items-center justify-between w-full max-w-[512px] bg-white py-3 px-10">
           <HomeIcon
             onClick={() => {
               navigate("/");

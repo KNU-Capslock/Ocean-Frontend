@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from "react";
 import Image from "@components/ui/Image";
+import { ShirtIcon } from "@components/Icons";
 
 interface ClothesContainerProps extends HTMLAttributes<HTMLDivElement> {
   clothImg: string;
@@ -15,15 +16,19 @@ const ClothesContainer = ({
   return (
     <div
       {...props}
+      style={{
+        width: "calc(50% - 0.5rem)",
+      }}
       className={
-        "flex items-center justify-center w-40 h-40 bg-neutral-200 p-4 rounded-3xl" +
+        "aspect-square relative flex flex-grow-0 items-center justify-center bg-neutral-200 p-8 rounded-3xl" +
         (className ?? "")
       }
     >
+      <ShirtIcon className="absolute w-8 h-8 left-4 top-4 text-neutral-600" />
       <Image
         src={clothImg}
         alt={clothType}
-        className="flex w-28 h-28 object-cover "
+        className="flex flex-grow-0 aspect-square z-[1]"
       />
     </div>
   );
