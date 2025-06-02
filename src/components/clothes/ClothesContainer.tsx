@@ -50,7 +50,7 @@ const ClothesContainer = ({
           onClick={() => {
             setVisible(false);
           }}
-          className="fixed top-0 left-0 z-20 w-screen h-screen"
+          className="fixed top-0 left-0 z-30 w-screen h-screen backdrop-blur-sm"
         >
           <Report
             className="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"

@@ -10,5 +10,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [addDynamicIconSelectors()],
+  plugins: [addDynamicIconSelectors(), require("tailwind-scrollbar-hide")],
 };

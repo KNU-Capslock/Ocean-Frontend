@@ -179,3 +179,12 @@ export const CameraAiIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
     />
   );
 };
+
+export const EnterIcon = ({ ...props }: HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      {...props}
+      className={"icon-[tdesign--enter] " + (props.className ?? "")}
+    />
+  );
+};

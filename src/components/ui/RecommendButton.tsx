@@ -11,7 +11,7 @@ const RecommendButton = ({
         (props.className ?? "")
       }
     >
-      <GPTIcon className="w-5 h-5" />
+      <GPTIcon className="w-6 h-6" />
       추천
     </button>
   );
