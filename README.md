@@ -6,7 +6,7 @@
 
 ## 📱 배포 링크
 
-[https://ocean.mojan.kr](https://ocean.mojan.kr)
+[https://o-cean.duckdns.org](https://o-cean.duckdns.org)
 
 ## 🌲 나달
 
