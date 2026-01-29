@@ -43,7 +43,12 @@ const Nav = () => {
             <CameraIcon className="w-6 h-6" />
           </div>
           <CalenderIcon className="w-6 h-6" />
-          <div className="w-6 h-6 overflow-hidden border rounded-full border-neutral-300">
+          <div
+            onClick={() => {
+              navigate("/profile");
+            }}
+            className="w-6 h-6 overflow-hidden border rounded-full border-neutral-300 cursor-pointer hover:border-blue-500 transition-colors"
+          >
             <img src="https://picsum.photos/256/256" />
           </div>
         </nav>
