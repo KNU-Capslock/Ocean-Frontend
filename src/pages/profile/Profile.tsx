@@ -62,14 +62,14 @@ const Profile = () => {
 
   const handleDelete = () => {
     const ok = confirm(
-      "정말로 계정을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
+      "정말로 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다."
     );
     if (!ok) return;
 
     deleteUserMutate(undefined, {
       onSuccess: () => {
         sessionStorage.removeItem("token");
-        alert("계정이 삭제되었습니다.");
+        alert("탈퇴되었습니다.");
         navigate("/login");
       },
       onError: (error: any) => {
@@ -215,7 +215,7 @@ const Profile = () => {
             onClick={() => navigate("/qr")}
             className="w-full px-4 py-3 font-semibold text-white bg-green-500 rounded-lg hover:bg-green-600"
           >
-            QR 코드 생성
+            스마트 거울 로그인 QR 생성
           </button>
 
           <button
@@ -230,7 +230,7 @@ const Profile = () => {
             onClick={handleDelete}
             className="w-full px-4 py-3 font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isDeleting ? "삭제 중..." : "계정 삭제"}
+            {isDeleting ? "탈퇴 중..." : "회원 탈퇴"}
           </button>
         </div>
       </div>
