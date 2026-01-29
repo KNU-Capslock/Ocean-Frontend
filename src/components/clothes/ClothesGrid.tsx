@@ -1,7 +1,7 @@
-// components/ClothesGrid.tsx
 import ClothesContainer from "./ClothesContainer";
 import { useGetClothes } from "@/hooks/api/cloth";
 import type { Cloth } from "@/models/cloth.model";
+
 const ClothesGrid = () => {
   const { data: clothes, isLoading } = useGetClothes();
 
@@ -14,7 +14,10 @@ const ClothesGrid = () => {
           .map((cloth: Cloth) => (
             <ClothesContainer
               key={cloth.id}
+              clothId={cloth.id}
               clothImg={cloth.image_src}
+              clothName={cloth.name}
+              clothUsername={cloth.username}
               clothType={cloth.type}
               detail={cloth.detail}
               print={cloth.print}

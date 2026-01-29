@@ -1,5 +1,10 @@
-import { getClothes } from "@services/cloth";
-import { useQuery } from "@tanstack/react-query";
+import {
+  deleteCloth,
+  getClothes,
+  updateCloth,
+  type UpdateClothPayload,
+} from "@services/cloth";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useGetClothes = () => {
   return useQuery({
@@ -8,11 +13,32 @@ export const useGetClothes = () => {
   });
 };
 
-// export const useGetOneCloth = (id: number) => {
-//   return useQuery({
-//     queryKey: ["cloth", id],
-//     queryFn: () => getOneCloth(id),
-//   });
-// };
+// ✅ 삭제 훅
+export const useDeleteCloth = () => {
+  const qc = useQueryClient();
 
-// export const useDeleteCloth = () => {};
+  return useMutation({
+    mutationFn: (id: number) => deleteCloth(id),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["clothes"] });
+    },
+  });
+};
+
+// ✅ 수정 훅
+export const useUpdateCloth = () => {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      id,
+      payload,
+    }: {
+      id: number;
+      payload: UpdateClothPayload;
+    }) => updateCloth(id, payload),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["clothes"] });
+    },
+  });
+};

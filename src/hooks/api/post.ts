@@ -2,9 +2,12 @@ import {
   getAllPost,
   getPost,
   postPost,
+  deletePost,
+  updatePost,
   type PostPostPayload,
+  type UpdatePostPayload,
 } from "@services/post";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useCreatePost = () => {
   const { mutate } = useMutation({
@@ -24,5 +27,33 @@ export const useGetAllPost = () => {
   return useQuery({
     queryKey: ["postAll"],
     queryFn: () => getAllPost(),
+  });
+};
+
+export const useDeletePost = () => {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: number) => deletePost(id),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["postAll"] });
+    },
+  });
+};
+
+export const useUpdatePost = () => {
+  const qc = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      id,
+      payload,
+    }: {
+      id: number;
+      payload: UpdatePostPayload;
+    }) => updatePost(id, payload),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["postAll"] });
+    },
   });
 };

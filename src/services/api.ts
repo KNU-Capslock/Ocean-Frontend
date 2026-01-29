@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
-const baseURL = import.meta.env.VITE_BACKEND_URL ?? "localhost:3000";
+const baseURL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:3000";
 
 const axiosApiInstance = axios.create({
   baseURL,
@@ -14,21 +14,25 @@ const successHandler = <T>(response: AxiosResponse<T>) => {
   return response.data;
 };
 
-axiosApiInstance.interceptors.request.use(
-  (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-    const token = sessionStorage.getItem("token");
-    if (token) config.headers.Authorization = `Bearer ${token}`;
-    return config;
+axiosApiInstance.interceptors.request.use((config) => {
+  const token = sessionStorage.getItem("token");
+  if (token) {
+    const auth = token.startsWith("Bearer ") ? token : `Bearer ${token}`;
+    config.headers = config.headers ?? {};
+    config.headers.Authorization = auth;
   }
-);
+  return config;
+});
 
 axiosApiInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response.status === 401) {
-      if (!!sessionStorage.getItem("token"))
-        window.location.href = `/login?redirect=${window.location.pathname}`;
+    if (error.response?.status === 401) {
+      const hadToken = !!sessionStorage.getItem("token");
       sessionStorage.removeItem("token");
+      if (hadToken) {
+        window.location.href = `/login?redirect=${window.location.pathname}`;
+      }
     }
     return Promise.reject(error);
   }
@@ -41,9 +45,21 @@ export const getRequest = async <T>(url: string, params?: any) => {
 export const postRequest = async <T>(
   url: string,
   payload: any,
-  options?: any
+  options: any = {}
 ) => {
-  return axiosApiInstance.post<T>(url, payload, options).then(successHandler);
+  const isFormData = payload instanceof FormData;
+
+  const mergedOptions = {
+    ...options,
+    headers: {
+      ...(options?.headers ?? {}),
+      ...(isFormData ? { "Content-Type": undefined } : {}),
+    },
+  };
+
+  return axiosApiInstance
+    .post<T>(url, payload, mergedOptions)
+    .then(successHandler);
 };
 
 export const putRequest = async <T>(

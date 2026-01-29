@@ -1,8 +1,8 @@
 import type { Post } from "@/models/post.model";
-import { getRequest, postRequest } from "./api";
+import { getRequest, postRequest, deleteRequest, patchRequest } from "./api";
 
 export type PostPostPayload = {
-  imageSrc: string;
+  imageSrc: string; // blob: URL (미리보기/업로드 원본)
   title: string;
   content: string;
 };
@@ -19,21 +19,31 @@ export const postPost = async (data: PostPostPayload) => {
   const form = new FormData();
 
   const blob = await fetch(data.imageSrc).then((res) => res.blob());
-
-  form.append("image", blob, "image.png");
-
-  const postData = {
-    title: data.title,
-    content: data.content,
-  };
-
-  const postBlob = new Blob([JSON.stringify(postData)], {
-    type: "application/json",
+  const file = new File([blob], "image.jpg", {
+    type: blob.type || "image/jpeg",
   });
 
+  form.append("image", file);
+
+  const postBlob = new Blob(
+    [JSON.stringify({ title: data.title, content: data.content })],
+    { type: "application/json" }
+  );
   form.append("post", postBlob);
 
-  return await postRequest<Post>("/posts", form, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
+  return await postRequest<Post>("/posts", form);
+};
+
+export const deletePost = async (id: number) => {
+  // swagger: DELETE /posts/{id}
+  return await deleteRequest<void>(`/posts/${id}`);
+};
+
+export type UpdatePostPayload = {
+  title: string;
+  content: string;
+};
+
+export const updatePost = async (id: number, payload: UpdatePostPayload) => {
+  return await patchRequest<Post>(`/posts/${id}`, payload);
 };
