@@ -29,10 +29,14 @@ const Camera = () => {
     ctx.drawImage(videoRef.current, sx, sy, cropW, cropH, 0, 0, cropW, cropH);
     canvasRef.current.toBlob((blob) => {
       if (!blob) return;
+
       const url = URL.createObjectURL(blob);
-      console.log(url);
-      navigate("/camera/result?url=" + url);
+
+      navigate("/camera/result?url=" + encodeURIComponent(url), {
+        state: { imageBlob: blob },
+      });
     }, "image/jpeg");
+
     stop();
   };
 
