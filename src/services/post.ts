@@ -15,6 +15,10 @@ export const getAllPost = async () => {
   return await getRequest<Post[]>(`/posts/all`);
 };
 
+export const getMyPosts = async () => {
+  return await getRequest<Post[]>(`/posts`);
+};
+
 export const postPost = async (data: PostPostPayload) => {
   const form = new FormData();
 

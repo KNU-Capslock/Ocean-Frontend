@@ -1,6 +1,7 @@
 import {
   getAllPost,
   getPost,
+  getMyPosts,
   postPost,
   deletePost,
   updatePost,
@@ -27,6 +28,13 @@ export const useGetAllPost = () => {
   return useQuery({
     queryKey: ["postAll"],
     queryFn: () => getAllPost(),
+  });
+};
+
+export const useGetMyPosts = () => {
+  return useQuery({
+    queryKey: ["myPosts"],
+    queryFn: () => getMyPosts(),
   });
 };
 

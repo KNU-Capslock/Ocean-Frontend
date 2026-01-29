@@ -12,6 +12,7 @@ import Register from "@pages/register/Register";
 import Post from "@pages/post/Post";
 import QrCode from "@pages/qr/QrCode";
 import Profile from "@pages/profile/Profile";
+import MyPosts from "@pages/myposts/MyPosts";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/camera/result" element={<CameraResult />} />
             <Route path="/qr" element={<QrCode />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/myposts" element={<MyPosts />} />
           </Routes>
         </Layout>
       </BrowserRouter>

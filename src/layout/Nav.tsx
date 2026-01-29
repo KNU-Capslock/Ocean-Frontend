@@ -42,7 +42,12 @@ const Nav = () => {
           >
             <CameraIcon className="w-6 h-6" />
           </div>
-          <CalenderIcon className="w-6 h-6" />
+          <CalenderIcon
+            onClick={() => {
+              navigate("/myposts");
+            }}
+            className="w-6 h-6 cursor-pointer"
+          />
           <div
             onClick={() => {
               navigate("/profile");
