@@ -10,6 +10,8 @@ import Onboarding from "@pages/Onboarding/Onboarding";
 import Login from "@pages/login/Login";
 import Register from "@pages/register/Register";
 import Post from "@pages/post/Post";
+import QrCode from "@pages/qr/QrCode";
+import Profile from "@pages/profile/Profile";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => {
             <Route path="/post" element={<Post />} />
             <Route path="/camera" element={<Camera />} />
             <Route path="/camera/result" element={<CameraResult />} />
+            <Route path="/qr" element={<QrCode />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </Layout>
       </BrowserRouter>
