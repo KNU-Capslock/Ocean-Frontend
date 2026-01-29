@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import type { AxiosResponse } from "axios";
 
 const baseURL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:3000";
 

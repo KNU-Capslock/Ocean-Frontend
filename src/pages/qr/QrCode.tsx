@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { useGetQrToken } from "@/hooks/api/qr";
 
 const QrCode = () => {
-  const [refreshKey, setRefreshKey] = useState(0);
   const { data, isLoading, error, refetch } = useGetQrToken();
 
   // 3분(180초)마다 자동 갱신
   useEffect(() => {
     const interval = setInterval(() => {
-      setRefreshKey((prev) => prev + 1);
       refetch();
     }, 180000); // 3분 = 180,000ms
 
@@ -17,7 +15,6 @@ const QrCode = () => {
   }, [refetch]);
 
   const handleRefresh = () => {
-    setRefreshKey((prev) => prev + 1);
     refetch();
   };
 
